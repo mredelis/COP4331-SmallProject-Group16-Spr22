@@ -10,29 +10,44 @@ let password = "";
 // let confirmPassword = "";
 // let hash = "";
 
+function displayError(str) {
+	document.getElementById("registerResult").innerHTML = str;
+}
+
 function doRegister() {
 
 	firstName = document.getElementById("firstName").value;
 	lastName = document.getElementById("lastName").value;
 	username = document.getElementById("username").value;
 	password = document.getElementById("newPassword").value;
-	// confirmPassword = document.getElementById("confirmPassword").value;
+	confirmPassword = document.getElementById("confirmNewPassword").value;
 	// hash = md5(password)
 
 	/* CONFIRM VALIDATION. REGEX ??????? */ 
-	// if (!firstName) {
-	// 	displayError("Missing first name");
-	// 	return;
-	// } else if (!login) {
-	// 	displayError("Missing username");
-	// 	return;
-	// } else if (!password && password.length < 8) {
-	// 	displayError("Please enter a 7 digit long password");
-	// 	return;
-	// } else if (password != passwordConfirm) {
-	// 	displayError("Passwords do not match");
-	// 	return;
-	// }
+	if (!firstName) {
+		displayError("Missing first name");
+	 	return;
+	}
+
+	if (!lastName) {
+		displayError("Missing last name");
+	 	return;
+	}
+	
+	if (!username) {
+		displayError("Missing username");
+		return;
+	}
+	
+	if (password.length < 7) {
+		displayError("Password must be at least 7 characters long");
+		return;
+	}
+	
+	if (password != confirmPassword) {
+		displayError("Passwords do not match");
+		return;
+	}
 
 	// Create payload
 	let tmp = { 
