@@ -23,7 +23,7 @@ function doRegister() {
 	confirmPassword = document.getElementById("confirmNewPassword").value;
 	// hash = md5(password)
 
-	/* CONFIRM VALIDATION. REGEX ??????? */ 
+	/* CONFIRM VALIDATION. REGEX */ 
 	if (!firstName) {
 		displayError("Missing first name");
 	 	return;
