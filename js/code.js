@@ -29,6 +29,8 @@ function doLogin() {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse(xhr.responseText);
+				// console.log("xhr.responseText from code.js" , xhr.responseText)
+
 				userId = jsonObject.id;
 
 				if (userId < 1) {
@@ -39,8 +41,14 @@ function doLogin() {
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
-				saveCookie();
+				// saveCookie();
 
+				// Save to Local Storage
+				// localStorage.setItem("KEY", "VALUE");
+				localStorage.setItem("fName", firstName);
+				localStorage.setItem("lName", lastName);
+				localStorage.setItem("userId", userId);
+				
 				window.location.href = "search.html";
 			}
 		};
@@ -52,102 +60,51 @@ function doLogin() {
 
 }
 
-function saveCookie() {
-	let minutes = 20;
-	let date = new Date();
-	date.setTime(date.getTime() + (minutes * 60 * 1000));
-	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
-}
 
-function readCookie() {
-	userId = -1;
-	let data = document.cookie;
-	let splits = data.split(",");
-	for (var i = 0; i < splits.length; i++) {
-		let thisOne = splits[i].trim();
-		let tokens = thisOne.split("=");
-		if (tokens[0] == "firstName") {
-			firstName = tokens[1];
-		}
-		else if (tokens[0] == "lastName") {
-			lastName = tokens[1];
-		}
-		else if (tokens[0] == "userId") {
-			userId = parseInt(tokens[1].trim());
-		}
-	}
+// function saveCookie() {
+// 	let minutes = 20;
+// 	let date = new Date();
+// 	date.setTime(date.getTime() + (minutes * 60 * 1000));
+// 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+// }
 
-	if (userId < 0) {
-		window.location.href = "index.html";
-	}
-	else {
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
-	}
-}
+// function readCookie() {
+// 	userId = -1;
+// 	let data = document.cookie;
+// 	let splits = data.split(",");
+// 	for (var i = 0; i < splits.length; i++) {
+// 		let thisOne = splits[i].trim();
+// 		let tokens = thisOne.split("=");
+// 		if (tokens[0] == "firstName") {
+// 			firstName = tokens[1];
+// 		}
+// 		else if (tokens[0] == "lastName") {
+// 			lastName = tokens[1];
+// 		}
+// 		else if (tokens[0] == "userId") {
+// 			userId = parseInt(tokens[1].trim());
+// 		}
+// 	}
+
+// 	if (userId < 0) {
+// 		window.location.href = "index.html";
+// 	}
+// 	else {
+// 		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+// 	}
+// }
 
 function doLogout() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	// document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"; // Using local Storage instead of Cookies
+	window.localStorage.clear(); // clear all local storage
 	window.location.href = "index.html";
 }
 
 /* MOVED TO A register.js FILE */
-// function doRegister() {
-// 	userId = 0;
-
-// 	let newFirstName = document.getElementById("firstName").value;
-// 	let newLastName = document.getElementById("lastName").value;
-// 	let newLogin = document.getElementById("newLogin").value;
-// 	let newPassword = document.getElementById("newPassword").value;
-// 	let newPasswordConfirm = document.getElementById("confirmNewPassword").value;
-
-// 	if (!firstName) {
-// 		displayError("Missing first name");
-// 		return;
-// 	} else if (!login) {
-// 		displayError("Missing username");
-// 		return;
-// 	} else if (!password && password.length < 8) {
-// 		displayError("Please enter a 7 digit long password");
-// 		return;
-// 	} else if (password != passwordConfirm) {
-// 		displayError("Passwords do not match");
-// 		return;
-// 	}
-
-// 	let tmp = { firstName: newFirstName, lastName: newLastName, login: newLogin, password: newPassword };
-// 	let jsonPayload = JSON.stringify(tmp);
-
-// 	let url = urlBase + '/Register.' + extension;
-
-// 	let xhr = new XMLHttpRequest();
-// 	xhr.open("POST", url, true);
-// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-// 	try {
-// 		xhr.onreadystatechange = function () {
-// 			if (this.readyState == 4 && this.status == 200) {
-// 				var jsonObject = JSON.parse(xhr.responseText);
-// 				userId = jsonObject.id;
-
-// 				if (userId < 1) {
-// 					displayError("Username not available");
-// 					return;
-// 				}
-
-// 				saveCookie();
-// 				window.location.href = "register.html";
-// 			}
-// 		};
-
-// 		xhr.send(jsonPayload);
-
-// 	} catch (err) {
-// 		displayError(err.message);
-// 	}
-
-// }
+// function doRegister()
 
 
 // function addColor() {

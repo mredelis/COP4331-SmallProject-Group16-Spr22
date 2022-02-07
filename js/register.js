@@ -77,6 +77,7 @@ function doRegister() {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				var jsonObject = JSON.parse(xhr.responseText);
+				// console.log(xhr.responseText)
 				console.log(jsonObject.error);
 
 				if (jsonObject.error == "Username already taken") {
