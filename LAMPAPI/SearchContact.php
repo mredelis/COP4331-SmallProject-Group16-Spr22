@@ -5,8 +5,9 @@
 	$search = $inData["search"];
    	$userID = $inData["userID"];
 	
-	// breaks down search into first name and last name
-	list($firstName, $lastName) = explode(" ", $search); // added this line because when searching for a full name, API endpoint was not working
+	// Breaks down $search into $firstName and $lastName
+	list($firstName, $lastName) = explode(" ", $search); // Added this line because when searching for a full name, API endpoint was not working
+														 // Now we can search with first name or first/last name
 
 	// searchResults will be a stringified, comma-separated list of JSON objects
    	$searchResults = "";
