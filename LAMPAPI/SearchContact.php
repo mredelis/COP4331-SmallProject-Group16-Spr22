@@ -24,7 +24,7 @@
 		// Matches on any first or last name containing
 		// the search string at any position
 		$stmt = $conn->prepare("SELECT ID,FirstName,LastName,Email,Phone FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ?) AND UserID=?");
-		$search = "%" . $search . "%";
+		// $search = "%" . $search . "%";
 		$stmt->bind_param("sss", $firstName, $lastName, $userID);
 		$stmt->execute();
 		$result = $stmt->get_result();
