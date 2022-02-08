@@ -4,6 +4,9 @@
 
 	$search = $inData["search"];
    	$userID = $inData["userID"];
+	
+	// breaks down search into first name and last name
+	list($firstName, $lastName) = explode(" ", $search); // added this line because when searching for a full name, API endpoint was not working
 
 	// searchResults will be a stringified, comma-separated list of JSON objects
    	$searchResults = "";
@@ -22,7 +25,7 @@
 		// the search string at any position
 		$stmt = $conn->prepare("SELECT ID,FirstName,LastName,Email,Phone FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ?) AND UserID=?");
 		$search = "%" . $search . "%";
-		$stmt->bind_param("sss", $search, $search, $userID);
+		$stmt->bind_param("sss", $firstName, $lastName, $userID);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
