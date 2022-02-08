@@ -6,13 +6,14 @@
 
     document.getElementById("headerName").innerHTML = "Logged in as " + firstName + " " + lastName;
 
-    // if(userId < 0) {
-    //     window.location.href = "index.html";
-    // }
-    // else {
-    //     document.getElementById("headerName").innerHTML = "Logged in as " + firstname + " " + lastName;
-    // }
+    if(userId < 0) {
+        window.location.href = "index.html";
+    }
+    else {
+        document.getElementById("headerName").innerHTML = "Logged in as " + firstname + " " + lastName;
+    }
 
+    
 
 // function myFunction() {
 //     // Declare variables
