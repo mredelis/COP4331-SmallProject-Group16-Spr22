@@ -148,7 +148,7 @@ function doAddContact()
 // Sara work in progress
 function doUpdateContact()
 {
-  // figure out how to get contact id in this line
+  let id = document.getElementById("contactID").value;
   let updateFirstName = document.getElementById("editFirstName").value;
   let updateLastName = document.getElementById("editLastName").value;
   let updateEmail = document.getElementById("editEmail").value;
@@ -156,7 +156,7 @@ function doUpdateContact()
 
   document.getElementById("contactUpdateResult").innerHTML = ""; 
 
-  let temp = { ID: Id, userID: userId, firstName: editFirstName, lastName: editLastName, email: editEmail, phone: editPhone };
+  let temp = { ID: id, userID: userId, firstName: updateFirstName, lastName: updateLastName, email: updateEmail, phone: updatePhone };
   let jsonPayload = JSON.stringify(temp);
 
   let url = urlBase + "/UpdateContact." + extension;
@@ -262,8 +262,8 @@ function formatPhoneNumber(phoneNumberString) {
   var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
   var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
   if (match) {
-    return "(" + match[1] + ") " + match[2] + "-" + match[3];
-    // return match[1] + "-" + match[2] + "-" + match[3];
+    //return "(" + match[1] + ") " + match[2] + "-" + match[3];
+    return match[1] + "-" + match[2] + "-" + match[3];
   }
   return null;
 }
