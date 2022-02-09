@@ -115,9 +115,6 @@ function doAddContact()
   let addEmail = document.getElementById("addEmail").value;
   let addPhone = document.getElementById("addPhone").value;
 
-  // format phone number
-  addPhone = formatPhoneNumber(addPhone);
-  
   document.getElementById("contactAddResult").innerHTML = ""; 
 
   let temp = { UserID: userId, FirstName: addFirstName, LastName: addLastName, Email: addEmail, Phone: addPhone };
@@ -233,6 +230,7 @@ function formatPhoneNumber(phoneNumberString) {
   var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
   if (match) {
     return "(" + match[1] + ") " + match[2] + "-" + match[3];
+    // return match[1] + "-" + match[2] + "-" + match[3];
   }
   return null;
 }
@@ -298,35 +296,6 @@ function doUpdateContact()
 
   
 }
-
-/* MOVED TO A register.js FILE */
-// function doRegister()
-
-// function addColor() {
-//     let newColor = document.getElementById("colorText").value;
-//     document.getElementById("colorAddResult").innerHTML = "";
-
-//     let tmp = { color: newColor, userId, userId };
-//     let jsonPayload = JSON.stringify(tmp);
-
-//     let url = urlBase + '/AddColor.' + extension;
-
-//     let xhr = new XMLHttpRequest();
-//     xhr.open("POST", url, true);
-//     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-//     try {
-//         xhr.onreadystatechange = function () {
-//             if (this.readyState == 4 && this.status == 200) {
-//                 document.getElementById("colorAddResult").innerHTML = "Color has been added";
-//             }
-//         };
-//         xhr.send(jsonPayload);
-//     }
-//     catch (err) {
-//         document.getElementById("colorAddResult").innerHTML = err.message;
-//     }
-
-// }
 
 // function searchColor() {
 //     let srch = document.getElementById("searchText").value;
