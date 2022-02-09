@@ -40,7 +40,7 @@
 
     <style>
       body {
-        background: url(images/background.png) no-repeat center center fixed;
+        /* background: url(images/background.png) no-repeat center center fixed; */
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -299,7 +299,8 @@
       });
     </script>
   </head>
-  <body onload="doReadContacts();">
+
+  <body onload="doReadContacts()" class="img js-fullheight" style="background-image: url(images/background.png);height:100vh "></body>
     <nav class="navbar navbar-light bg-light justify-content-between">
       <a class="navbar-brand" input id="welcomeMessage" type="text"></a>
       <a class="navbar-brand text-align">Contact Master</a>
@@ -310,7 +311,7 @@
           class="btn btn-info"
           onclick="doLogout();"
         >
-          Log out
+          Logout
         </button>
       </form>
     </nav>
@@ -355,6 +356,7 @@
                   </span>
                 </th>
                 <th>Name</th>
+                <th>Last Name</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Actions</th>
@@ -611,5 +613,12 @@
         </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+      <div class="footer-copyright text-center py-3" style="color: #fff">
+        COP4331 Spring 2022 Group 16 Small Project
+      </div>
+    </footer>
   </body>
 </html>
