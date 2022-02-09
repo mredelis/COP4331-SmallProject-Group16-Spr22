@@ -148,7 +148,7 @@ function doAddContact()
 // Sara work in progress
 function doUpdateContact()
 {
-  let Id = document.getElementById("contactUpdateResult").;
+  // figure out how to get contact id in this line
   let updateFirstName = document.getElementById("editFirstName").value;
   let updateLastName = document.getElementById("editLastName").value;
   let updateEmail = document.getElementById("editEmail").value;
