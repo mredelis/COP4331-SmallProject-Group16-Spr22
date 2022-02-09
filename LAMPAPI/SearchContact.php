@@ -20,14 +20,18 @@ if ($conn->connect_error) {
 		$stmt->bind_param("i", $userID);
 	}
 	// Returns contacts that match for each character typed in the search bar
-	else {
-		$stmt = $conn->prepare("SELECT ID,FirstName,LastName,Email,Phone FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ?) AND UserID=?");
-
+	else
+	{
 		// Checks for white space using regex
-		if (preg_match('/\s/', $str)) {
+		if (preg_match('/\s/',$str))
+		{
 			$name = explode(" ", $str);
+			$stmt = $conn->prepare("SELECT ID,FirstName,LastName,Email,Phone FROM Contacts WHERE (FirstName LIKE ? AND LastName LIKE ?) AND UserID=?");
 			$stmt->bind_param("ssi", $name[0], $name[1], $userID);
-		} else {
+		}
+		else
+		{
+			$stmt = $conn->prepare("SELECT ID,FirstName,LastName,Email,Phone FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ?) AND UserID=?");
 			$stmt->bind_param("ssi", $str, $str, $userID);
 		}
 	}
