@@ -23,7 +23,7 @@ if ($conn->connect_error) {
         else
         {
 		// Checks for white space using regex
-		if (preg_match('/\s/',$str))
+		if (preg_match('/\s/', $str))
 		{
 			$name = explode(" ", $str);
 			$stmt = $conn->prepare("SELECT ID,FirstName,LastName,Email,Phone FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ?) AND UserID=?");
