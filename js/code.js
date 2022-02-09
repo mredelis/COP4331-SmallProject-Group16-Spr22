@@ -43,11 +43,11 @@ function doLogin() {
 
 				saveCookie();
 
-				// Save to Local Storage
+				// Save to Local Storage. Using cookies instead
 				// localStorage.setItem("KEY", "VALUE");
-				localStorage.setItem("fName", firstName);
-				localStorage.setItem("lName", lastName);
-				localStorage.setItem("userId", userId);
+				// localStorage.setItem("fName", firstName);
+				// localStorage.setItem("lName", lastName);
+				// localStorage.setItem("userId", userId);
 				
 				window.location.href = "search.html";
 			}
@@ -64,8 +64,8 @@ function doLogout() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	// document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"; // Using local Storage instead of Cookies
-	window.localStorage.clear(); // clear all local storage
+	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	// window.localStorage.clear(); // clear all local storage
 	window.location.href = "index.html";
 }
 
@@ -106,7 +106,7 @@ function readCookie()
 	}
 	else
 	{
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+		document.getElementById("welcomeMessage").innerHTML = "Welcome, " + firstName + " " + lastName;
 	}
 }
 
