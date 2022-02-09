@@ -41,7 +41,7 @@ function doLogin() {
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
-				// saveCookie();
+				saveCookie();
 
 				// Save to Local Storage
 				// localStorage.setItem("KEY", "VALUE");
@@ -57,6 +57,86 @@ function doLogin() {
 	catch (err) {
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
+
+}
+
+function doLogout() {
+	userId = 0;
+	firstName = "";
+	lastName = "";
+	// document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"; // Using local Storage instead of Cookies
+	window.localStorage.clear(); // clear all local storage
+	window.location.href = "index.html";
+}
+
+function saveCookie()
+{
+	let minutes = 20;
+	let date = new Date();
+	date.setTime(date.getTime()+(minutes*60*1000));	
+	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+}
+
+function readCookie()
+{
+	userId = -1;
+	let data = document.cookie;
+	let splits = data.split(",");
+	for(var i = 0; i < splits.length; i++) 
+	{
+		let thisOne = splits[i].trim();
+		let tokens = thisOne.split("=");
+		if( tokens[0] == "firstName" )
+		{
+			firstName = tokens[1];
+		}
+		else if( tokens[0] == "lastName" )
+		{
+			lastName = tokens[1];
+		}
+		else if( tokens[0] == "userId" )
+		{
+			userId = parseInt( tokens[1].trim() );
+		}
+	}
+	
+	if( userId < 0 )
+	{
+		window.location.href = "index.html";
+	}
+	else
+	{
+		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+	}
+}
+
+function addContact() {
+    let newContact = document.getElementById("contactText").value; // need html to match element id
+    document.getElementById("contactAddResult").innerHTML = ""; // need html to match element id
+
+    let tmp = { contact: newContact, userId, userId };
+    let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + '/AddContact.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try {
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+            }
+        };
+        xhr.send(jsonPayload);
+    }
+    catch (err) {
+        document.getElementById("contactAddResult").innerHTML = err.message;
+    }
+}
+
+function searchContact() {
+
 
 }
 
@@ -94,14 +174,6 @@ function doLogin() {
 // 	}
 // }
 
-function doLogout() {
-	userId = 0;
-	firstName = "";
-	lastName = "";
-	// document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"; // Using local Storage instead of Cookies
-	window.localStorage.clear(); // clear all local storage
-	window.location.href = "index.html";
-}
 
 /* MOVED TO A register.js FILE */
 // function doRegister()
