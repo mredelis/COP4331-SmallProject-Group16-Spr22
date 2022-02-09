@@ -115,6 +115,9 @@ function doAddContact()
   let addEmail = document.getElementById("addEmail").value;
   let addPhone = document.getElementById("addPhone").value;
 
+  // format phone number
+  addPhone = formatPhoneNumber(addPhone);
+  
   document.getElementById("contactAddResult").innerHTML = ""; 
 
   let temp = { UserID: userId, FirstName: addFirstName, LastName: addLastName, Email: addEmail, Phone: addPhone };
@@ -143,6 +146,12 @@ function doAddContact()
   }
 
   doLoadContacts();
+}
+
+// Sara work in progress
+function doUpdateContact()
+{
+
 }
 
 // Edelis work in progress
