@@ -145,9 +145,63 @@ function doLoadContacts() {
 	console.log("Search String: ", searchString);
 
 	let temp = {userID: userId, search: searchString};
-	// let jsonPayload = 
+	let jsonPayload = JSON.stringify(temp);
+
+	let url = urlBase + '/SearchContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try{
+		//send query to API
+		xhr.send(jsonPayload);
+
+		// When query finished processing
+		xhr.onreadystatechange = function ()
+		{
+			//if everything is correct
+            if (this.readyState == 4 && this.status == 200)
+			{
+                // Parse API response to JSON object
+				let jsonObject = JSON.parse(xhr.responseText)
+
+				// If "error": "No Records Found" or "id": 0. Try with both
+				if(jsonObject.error == "No Records Found")
+				{
+					console.log(jsonObject.id);
+					console.log(jsonObject.error);
+					
+					resetContactsTable();
+					return;
+				}
+
+				// Store contacts in array
+				let contactsArray = jsonObject.results;
+				console.log("Found " + contactsArray.length + " contacts for usedID " + userId);
+
+				// resetContactsTable();
 
 
+
+
+            }
+		}
+
+
+
+	}
+	catch(err)
+	{
+		console.log(err);
+	}
+
+
+}
+
+function resetContactsTable()
+{
+	//TODO
 }
 
 
