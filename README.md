@@ -4,7 +4,7 @@
 
 | Members              | Roles        |
 |----------------------|--------------|
-|Betancourth, Sara     | API          |
+|Betancourth, Sara     | API/Front-end|
 |Hoelscher, Layne      | API/Front-end|
 |Molina, Edelis        | Database/API |
 |Santinato, Gianfranco | Front-end/PM |
