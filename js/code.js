@@ -148,7 +148,39 @@ function doAddContact()
 // Sara work in progress
 function doUpdateContact()
 {
+  let updateFirstName = document.getElementById("editFirstName").value;
+  let updateLastName = document.getElementById("editLastName").value;
+  let updateEmail = document.getElementById("editEmail").value;
+  let updatePhone = document.getElementById("editPhone").value;
 
+  document.getElementById("contactUpdateResult").innerHTML = ""; 
+
+  let temp = { ID: Id, userID: userId, firstName: editFirstName, lastName: editLastName, email: editEmail, phone: editPhone };
+  let jsonPayload = JSON.stringify(temp);
+
+  let url = urlBase + "/AddContact." + extension;
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  try 
+  {
+    xhr.onreadystatechange = function () 
+    {
+      if (this.readyState == 4 && this.status == 200) 
+      {
+        document.getElementById("contactUpdateResult").innerHTML =
+          "Contact has been added";
+      }
+    };
+    xhr.send(jsonPayload);
+  } 
+  catch (err) 
+  {
+    document.getElementById("contactUpdateResult").innerHTML = err.message;
+  }
+
+  doLoadContacts();
 }
 
 // Edelis work in progress
@@ -285,17 +317,6 @@ function addToContactsTable(rowID, firstName, lastName, email, phone) {
   return newTr;
 }
 
-// Sara Code
-// Placeholder
-function doUpdateContact()
-{
-  let updateFirstName = document.getElementById("editFirstName").value;
-  let updateLastName = document.getElementById("editLastName").value;
-  let updateEmail = document.getElementById("editEmail").value;
-  let updatePhone = document.getElementById("editPhone").value;
-
-  
-}
 
 // function searchColor() {
 //     let srch = document.getElementById("searchText").value;
