@@ -513,6 +513,9 @@
               </button>
             </div>
             <div class="modal-body">
+              <div style="text-align: center">
+                <span id="contactAddResult" style="color: #ff0f0f"></span>
+              </div>
               <div class="form-group">
                 <label>First Name</label>
                 <input
@@ -540,10 +543,7 @@
                   required
                 />
               </div>
-              <!-- <div class="form-group">
-						<label>Address</label>
-						<textarea id="addAddress" class="form-control" required></textarea>
-					</div> -->
+
               <div class="form-group">
                 <label>Phone</label>
                 <input
@@ -561,7 +561,12 @@
                 data-dismiss="modal"
                 value="Cancel"
               />
-              <input type="submit" class="btn btn-success" value="Add" />
+              <input 
+                type="submit" 
+                class="btn btn-success" 
+                value="Add" 
+                onclick="doAddContact()"
+              />
             </div>
           </form>
         </div>
@@ -581,15 +586,18 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>First Name</label>
-                <input id="addFirstName" type="text" class="form-control" required />
+                <!-- <input id="addFirstName" type="text" class="form-control" required /> -->
+                <input id="editFirstName" type="text" class="form-control" required />
               </div>
               <div class="form-group">
                 <label>Last Name</label>
-                <input id="addLastName" type="text" class="form-control" required />
+                <!-- <input id="addLastName" type="text" class="form-control" required /> -->
+                <input id="editLastName" type="text" class="form-control" required />
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <input id="addEmail" type="email" class="form-control" required />
+                <!-- <input id="addEmail" type="email" class="form-control" required /> -->
+                <input id="editEmail" type="email" class="form-control" required />
               </div>
               <!-- <div class="form-group">
               <label>Address</label>
@@ -597,12 +605,13 @@
             </div> -->
               <div class="form-group">
                 <label>Phone</label>
-                <input id="addPhone" type="text" class="form-control" required />
+                <!-- <input id="addPhone" type="text" class="form-control" required /> -->
+                <input id="editPhone" type="text" class="form-control" required />
               </div>
             </div>
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-              <input type="submit" class="btn btn-info" value="Save" />
+              <input type="submit" class="btn btn-info" value="Save" onclick="doUpdateContact()" />
             </div>
           </form>
         </div>

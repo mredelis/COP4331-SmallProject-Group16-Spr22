@@ -107,12 +107,18 @@ function readCookie() {
   }
 }
 
-function addContact() {
-  let newContact = document.getElementById("contactText").value; // need html to match element id
-  document.getElementById("contactAddResult").innerHTML = ""; // need html to match element id
+// Sara Code
+function doAddContact() 
+{
+  let addFirstName = document.getElementById("addFirstName").value;
+  let addLastName = document.getElementById("addLastName").value;
+  let addEmail = document.getElementById("addEmail").value;
+  let addPhone = document.getElementById("addPhone").value;
 
-  let tmp = { contact: newContact, userId, userId };
-  let jsonPayload = JSON.stringify(tmp);
+  document.getElementById("contactAddResult").innerHTML = ""; 
+
+  let temp = { UserID: userId, FirstName: addFirstName, LastName: addLastName, Email: addEmail, Phone: addPhone };
+  let jsonPayload = JSON.stringify(temp);
 
   let url = urlBase + "/AddContact." + extension;
 
@@ -130,6 +136,8 @@ function addContact() {
   } catch (err) {
     document.getElementById("contactAddResult").innerHTML = err.message;
   }
+
+  doLoadContacts();
 }
 
 // Edelis work in progress
@@ -263,6 +271,18 @@ function addToContactsTable(rowID, firstName, lastName, email, phone) {
 		<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>';
 
   return newTr;
+}
+
+// Sara Code
+// Placeholder
+function doUpdateContact()
+{
+  let updateFirstName = document.getElementById("editFirstName").value;
+  let updateLastName = document.getElementById("editLastName").value;
+  let updateEmail = document.getElementById("editEmail").value;
+  let updatePhone = document.getElementById("editPhone").value;
+
+  
 }
 
 /* MOVED TO A register.js FILE */
