@@ -295,7 +295,7 @@
         });
 
         // Fill edit popup with info that was already there
-	$("#editEmployeeModal").on('show.bs.modal', function (e) {
+	      $("#editEmployeeModal").on('show.bs.modal', function (e) {
           // Get ID of current row
           let srcEl = e.relatedTarget;
           let row = $(srcEl).closest("tr");
@@ -307,24 +307,13 @@
           // Get name and stuff
           // We probably want to separate first + last name
           // for cases where last name has whitespace
-<<<<<<< HEAD
           let contactId = cells.eq(0).text();
-          let firstName = cells.eq(1).text();
-          let lastName = cells.eq(2).text();
-          let email = cells.eq(3).text();
-          let phone = cells.eq(4).text();
-
-          $("#contactId", this).val(contactId);
-=======
-          
-// 	  let contactId = cells.eq(0).text();
-	  let firstName = cells.eq(1).text();
+	        let firstName = cells.eq(1).text();
           let lastName = cells.eq(2).text();
           let email = cells.eq(3).text();
           let phone = cells.eq(4).text();
 	
-// 	  $("#contactID", this).val(contactId);
->>>>>>> 87f45b5069316fdeb1dd6da74c428ed193d238cb
+	        $("#contactID", this).val(contactId);
           $("#editFirstName", this).val(firstName);
           $("#editLastName", this).val(lastName);
           $("#editEmail", this).val(email);
