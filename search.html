@@ -307,15 +307,17 @@
           // Get name and stuff
           // We probably want to separate first + last name
           // for cases where last name has whitespace
+          let contactId = cells.eq(0).text();
           let firstName = cells.eq(1).text();
           let lastName = cells.eq(2).text();
           let email = cells.eq(3).text();
           let phone = cells.eq(4).text();
 
-          $("#addFirstName", this).val(firstName);
-          $("#addLastName", this).val(lastName);
-          $("#addEmail", this).val(email);
-          $("#addPhone", this).val(phone);
+          $("#contactId", this).val(contactId);
+          $("#editFirstName", this).val(firstName);
+          $("#editLastName", this).val(lastName);
+          $("#editEmail", this).val(email);
+          $("#editPhone", this).val(phone);
         });
 
         // Focus first name text box once modal appears
@@ -583,29 +585,28 @@
                 &times;
               </button>
             </div>
+            <div style="text-align: center">
+              <span id="contactUpdateResult" style="color: #ff0f0f"></span>
+            </div>
             <div class="modal-body">
+              <!-- <div class="form-group">
+                <label>Id</label>
+                <input id="contactId" type="text" class="form-control" required />
+              </div> -->
               <div class="form-group">
                 <label>First Name</label>
-                <!-- <input id="addFirstName" type="text" class="form-control" required /> -->
                 <input id="editFirstName" type="text" class="form-control" required />
               </div>
               <div class="form-group">
                 <label>Last Name</label>
-                <!-- <input id="addLastName" type="text" class="form-control" required /> -->
                 <input id="editLastName" type="text" class="form-control" required />
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <!-- <input id="addEmail" type="email" class="form-control" required /> -->
                 <input id="editEmail" type="email" class="form-control" required />
               </div>
-              <!-- <div class="form-group">
-              <label>Address</label>
-              <textarea id="addAddress" class="form-control" required></textarea>
-            </div> -->
               <div class="form-group">
                 <label>Phone</label>
-                <!-- <input id="addPhone" type="text" class="form-control" required /> -->
                 <input id="editPhone" type="text" class="form-control" required />
               </div>
             </div>

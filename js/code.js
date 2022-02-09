@@ -158,7 +158,7 @@ function doUpdateContact()
   let temp = { ID: Id, userID: userId, firstName: editFirstName, lastName: editLastName, email: editEmail, phone: editPhone };
   let jsonPayload = JSON.stringify(temp);
 
-  let url = urlBase + "/AddContact." + extension;
+  let url = urlBase + "/UpdateContact." + extension;
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", url, true);
@@ -170,7 +170,7 @@ function doUpdateContact()
       if (this.readyState == 4 && this.status == 200) 
       {
         document.getElementById("contactUpdateResult").innerHTML =
-          "Contact has been added";
+          "Contact has been updated";
       }
     };
     xhr.send(jsonPayload);
