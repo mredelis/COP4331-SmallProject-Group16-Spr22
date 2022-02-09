@@ -307,13 +307,12 @@
           // Get name and stuff
           // We probably want to separate first + last name
           // for cases where last name has whitespace
-          let contactId = cells.eq(0).text();
 	        let firstName = cells.eq(1).text();
           let lastName = cells.eq(2).text();
           let email = cells.eq(3).text();
           let phone = cells.eq(4).text();
 	
-	        $("#contactID", this).val(contactId);
+	        // $("#contactID", this).val(id);
           $("#editFirstName", this).val(firstName);
           $("#editLastName", this).val(lastName);
           $("#editEmail", this).val(email);
