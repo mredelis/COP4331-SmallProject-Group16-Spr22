@@ -293,6 +293,40 @@
             $("#selectAll").prop("checked", false);
           }
         });
+
+        // Fill edit popup with info that was already there
+			  $("#editEmployeeModal").on('show.bs.modal', function (e) {
+          // Get ID of current row
+          let srcEl = e.relatedTarget;
+          let row = $(srcEl).closest("tr");
+          let id = row.attr("id");
+
+          // Get set of cells of current row
+          let cells = $("#" + id + " td");
+
+          // Get name and stuff
+          // We probably want to separate first + last name
+          // for cases where last name has whitespace
+          let name = cells.eq(1).text();
+          let splitName = name.split(/\s/);
+          let email = cells.eq(2).text();
+          let phone = cells.eq(3).text();
+
+          $("#addFirstName", this).val(splitName[0]);
+          $("#addLastName", this).val(splitName[1]);
+          $("#addEmail", this).val(email);
+          $("#addPhone", this).val(phone);
+        });
+
+        // Focus first name text box once modal appears
+        // Allows immediately pressing escape to exit
+        $("#editEmployeeModal").on('shown.bs.modal', function() {
+          $("input:visible:enabled:first", this).focus();
+        });
+
+        $("#editEmployeeModal").on('hidden.bs.modal', function () {
+          $(this).find("form").trigger("reset");
+        });
       });
     </script>
   </head>
