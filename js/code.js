@@ -192,6 +192,38 @@ function doUpdateContact(id) {
   // doLoadContacts();
 }
 
+function doDeleteContact(id) {
+  let temp = { ID: id };
+  let jsonPayload = JSON.stringify(temp);
+
+  let url = urlBase + "/DeleteContact." + extension;
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        // document.getElementById("contactUpdateResult").innerHTML =
+        //   "Contact has been updated";
+        let row = document.getElementById(id);
+        row.parentNode.removeChild(row);
+      }
+    };
+
+    xhr.send(jsonPayload);
+  }
+  catch (err) {
+    // document.getElementById("contactUpdateResult").innerHTML = err.message;
+    console.log(err);
+  }
+
+  // localStorage.removeItem('contactID');
+  // localStorage.clear();
+  // resetContactsTable();
+  // doLoadContacts();
+}
+
 // Edelis work in progress
 function doLoadContacts() {
   //readCookie() is on the search.html so the userId should be available when <body> loads

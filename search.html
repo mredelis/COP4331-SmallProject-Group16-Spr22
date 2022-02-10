@@ -369,12 +369,10 @@
       $("#editUserModal").on('shown.bs.modal', function () {
         $("input:visible:enabled:first", this).focus();
       });
-
       $("#editUserModal").on('hidden.bs.modal', function () {
         $(this).find("form").trigger("reset");
         document.getElementById("contactUpdateResult").innerHTML = "";
       });
-
       $("#editUserModal form").submit(function () {
         doUpdateContact(rowId);
         return false;
@@ -383,6 +381,10 @@
       $("#addUserModal form").submit(function () {
         doAddContact();
         return false;
+      });
+
+      $("#deleteUserModal form").submit(function () {
+        doDeleteContact(rowId);
       });
     });
   </script>
