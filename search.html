@@ -372,11 +372,13 @@
 
       $("#editUserModal").on('hidden.bs.modal', function () {
         $(this).find("form").trigger("reset");
+        document.getElementById("contactUpdateResult").innerHTML =
+          "Contact has been updated";
       });
 
       $("#editUserModal form").submit(function () {
         doUpdateContact(rowId);
-        $("#editUserModal").modal("hide");
+        // $("#editUserModal").modal("hide");
         return false;
       });
     });
