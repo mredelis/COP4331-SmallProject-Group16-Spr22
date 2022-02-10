@@ -301,8 +301,8 @@ function narrowSearch() {
 
   for (let i = 0; i < trs.length; i++) {
     let cells = trs[i].getElementsByTagName("td");
-    let curFirst = cells[1].value.toLowerCase();
-    let curLast = cells[2].value.toLowerCase();
+    let curFirst = cells[1].innerHTML.toLowerCase();
+    let curLast = cells[2].innerHTML.toLowerCase();
 
     if (curFirst.includes(srch) || curLast.includes(srch)) {
       trs[i].style.display = "";
