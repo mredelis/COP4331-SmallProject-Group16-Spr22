@@ -337,6 +337,12 @@
 
       let rowId = 0;
 
+      // Add contact button
+      $("#addUserModal form").submit(function () {
+        doAddContact();
+        return false;
+      });
+
       // Fill edit popup with info that was already there
       $("#editUserModal").on('show.bs.modal', function (e) {
         // Get ID of current row
@@ -363,32 +369,30 @@
         $("#editEmail", this).val(email);
         $("#editPhone", this).val(phone);
       });
-
       // Focus first name text box once modal appears
       // Allows immediately pressing escape to exit
       $("#editUserModal").on('shown.bs.modal', function () {
         $("input:visible:enabled:first", this).focus();
       });
+      // Reset form on modal close
       $("#editUserModal").on('hidden.bs.modal', function () {
         $(this).find("form").trigger("reset");
         document.getElementById("contactUpdateResult").innerHTML = "";
       });
+      // Actual submit action
       $("#editUserModal form").submit(function () {
         doUpdateContact(rowId);
         return false;
       });
 
-      $("#addUserModal form").submit(function () {
-        doAddContact();
-        return false;
-      });
-
+      // Update rowId when open delete dialog
       $("#deleteUserModal").on('show.bs.modal', function (e) {
         let srcEl = e.relatedTarget;
         let row = $(srcEl).closest("tr");
         let id = row.attr("id");
         rowId = id;
       });
+      // Actual delete action
       $("#deleteUserModal form").submit(function () {
         doDeleteContact(rowId);
         $("#deleteUserModal").modal("hide");
