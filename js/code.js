@@ -297,7 +297,7 @@ function doLoadContacts() {
         let searchBar = document.getElementById("searchBar");
         let len = searchBar.value.length * 2;
         searchBar.focus();
-        searchBar[0].setSelectionRange(len, len);
+        searchBar.setSelectionRange(len, len);
       }
     };
   }
