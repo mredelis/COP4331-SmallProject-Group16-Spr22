@@ -437,6 +437,7 @@
 
       // Search
       $("#searchBar").on("input", function () {
+        resetContactsTable();
         doLoadContacts();
       });
     });
