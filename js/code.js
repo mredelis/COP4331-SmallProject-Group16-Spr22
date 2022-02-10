@@ -128,10 +128,14 @@ function doAddContact() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        // let jsonObject = JSON.parse(xhr.responseText);
-        // let id = jsonObject.id;
-
-        // addToContactsTable(id, addFirstName, addLastName, addEmail, formatPhoneNumber(addPhone));
+        // Get ID of row added to database
+        // Only append new row if added contact matches search term(s)
+        let curSearch = document.getElementById("searchBar").value.toLowerCase();
+        if (addFirstName.toLowerCase().includes(curSearch) || addLastName.toLowerCase().includes(curSearch)) {
+          let jsonObject = JSON.parse(xhr.responseText);
+          let id = jsonObject.id;
+          addToContactsTable(id, addFirstName, addLastName, addEmail, formatPhoneNumber(addPhone));
+        }
 
         document.getElementById("contactAddResult").innerHTML =
           "Contact has been added";
@@ -175,8 +179,9 @@ function doUpdateContact(id) {
     };
 
     xhr.send(jsonPayload);
-    let cells = document.getElementById(id).getElementsByTagName("td");
 
+    // Update table row in-place
+    let cells = document.getElementById(id).getElementsByTagName("td");
     cells[1].innerHTML = updateFirstName;
     cells[2].innerHTML = updateLastName;
     cells[3].innerHTML = updateEmail;
@@ -296,8 +301,8 @@ function resetContactsTable() {
 // Layne Code
 // Thank you StackOverflow
 function formatPhoneNumber(phoneNumberString) {
-  var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
-  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+  let cleaned = ("" + phoneNumberString).replace(/\D/g, "");
+  let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
   if (match) {
     //return "(" + match[1] + ") " + match[2] + "-" + match[3];
     return match[1] + "-" + match[2] + "-" + match[3];
@@ -354,42 +359,3 @@ function addToContactsTable(rowID, firstName, lastName, email, phone) {
 
   return newTr;
 }
-
-
-// function searchColor() {
-//     let srch = document.getElementById("searchText").value;
-//     document.getElementById("colorSearchResult").innerHTML = "";
-
-//     let colorList = "";
-
-//     let tmp = { search: srch, userId: userId };
-//     let jsonPayload = JSON.stringify(tmp);
-
-//     let url = urlBase + '/SearchColors.' + extension;
-
-//     let xhr = new XMLHttpRequest();
-//     xhr.open("POST", url, true);
-//     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-//     try {
-//         xhr.onreadystatechange = function () {
-//             if (this.readyState == 4 && this.status == 200) {
-//                 document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
-//                 let jsonObject = JSON.parse(xhr.responseText);
-
-//                 for (let i = 0; i < jsonObject.results.length; i++) {
-//                     colorList += jsonObject.results[i];
-//                     if (i < jsonObject.results.length - 1) {
-//                         colorList += "<br />\r\n";
-//                     }
-//                 }
-
-//                 document.getElementsByTagName("p")[0].innerHTML = colorList;
-//             }
-//         };
-//         xhr.send(jsonPayload);
-//     }
-//     catch (err) {
-//         document.getElementById("colorSearchResult").innerHTML = err.message;
-//     }
-
-// }

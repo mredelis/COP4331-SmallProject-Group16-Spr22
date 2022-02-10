@@ -337,9 +337,29 @@
 
       let rowId = 0;
 
+      $("#addUserModal").on("hidden.bs.modal", function () {
+        $(this).find("form").trigger("reset");
+        document.getElementById("contactAddResult").innerHTML = "";
+      })
       // Add contact button
       $("#addUserModal form").submit(function () {
-        doAddContact();
+        let phone = $("#addPhone").val();
+
+        // This will be null if the phone number field is invalid
+        let phoneF = formatPhoneNumber(phone);
+
+        // Get text field for phone
+        let el = $("#addPhone")[0];
+
+        if (phoneF) {
+          doAddContact();
+        } else {
+          // Custom validation message
+          el.setCustomValidity("Please enter a valid 10-digit phone number.");
+          el.reportValidity();
+        }
+        // Clear validation message for next attempt
+        el.setCustomValidity("");
         return false;
       });
 
@@ -381,7 +401,23 @@
       });
       // Actual submit action
       $("#editUserModal form").submit(function () {
-        doUpdateContact(rowId);
+        let phone = $("#editPhone").val();
+
+        // This will be null if the phone number field is invalid
+        let phoneF = formatPhoneNumber(phone);
+
+        // Get text field for phone
+        let el = $("#editPhone")[0];
+
+        if (phoneF) {
+          doUpdateContact(rowId);
+        } else {
+          // Custom validation message
+          el.setCustomValidity("Please enter a valid 10-digit phone number.");
+          el.reportValidity();
+        }
+        // Clear validation message for next attempt
+        el.setCustomValidity("");
         return false;
       });
 
@@ -402,11 +438,11 @@
   </script>
 </head>
 
-<body onload="doLoadContacts()" class="img js-fullheight"
+<body onload="doReadContacts()" class="img js-fullheight"
   style="background-image: url(images/background.png); height: 100vh">
   <nav class="navbar navbar-light bg-light justify-content-between">
     <a class="navbar-brand" input id="welcomeMessage" type="text"></a>
-    <a class="navbar-brand" style = "position:relative; left:-88px;">Contact Master</a>
+    <a class="navbar-brand" style="position:relative; left:-88px;">Contact Master</a>
     <form class="form-inline">
       <button id="logoutButton" type="button" class="btn btn-info" onclick="doLogout();">
         Logout
@@ -492,7 +528,6 @@
               <label>Email</label>
               <input id="addEmail" type="email" class="form-control" required />
             </div>
-
             <div class="form-group">
               <label>Phone</label>
               <input id="addPhone" type="text" class="form-control" required />
