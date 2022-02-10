@@ -165,7 +165,14 @@ function doUpdateContact(id) {
           "Contact has been updated";
       }
     };
+
     xhr.send(jsonPayload);
+    let cells = document.getElementById(id).getElementsByTagName("td");
+
+    cells[1] = updateFirstName;
+    cells[2] = updateLastName;
+    cells[3] = updateEmail;
+    cells[4] = updatePhone;
   }
   catch (err) {
     document.getElementById("contactUpdateResult").innerHTML = err.message;
@@ -173,8 +180,8 @@ function doUpdateContact(id) {
 
   // localStorage.removeItem('contactID');
   // localStorage.clear();
-  resetContactsTable();
-  doLoadContacts();
+  // resetContactsTable();
+  // doLoadContacts();
 }
 
 // Edelis work in progress
