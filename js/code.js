@@ -294,6 +294,24 @@ function doLoadContacts() {
 
 }
 
+function narrowSearch() {
+  let srch = document.getElementById("searchBar").value.toLowerCase();
+  let table = document.getElementById("table");
+  let trs = table.getElementsByTagName("tr");
+
+  for (let i = 0; i < trs.length; i++) {
+    let cells = trs[i].getElementsByTagName("td");
+    let curFirst = cells[1].value.toLowerCase();
+    let curLast = cells[2].value.toLowerCase();
+
+    if (curFirst.includes(srch) || curLast.includes(srch)) {
+      trs[i].style.display = "";
+    } else {
+      trs[i].style.display = "none";
+    }
+  }
+}
+
 function resetContactsTable() {
   document.getElementById("table").getElementsByTagName("tbody")[0].innerHTML = "";
 }
