@@ -108,14 +108,13 @@ function readCookie() {
 }
 
 // Sara Code
-function doAddContact() 
-{
+function doAddContact() {
   let addFirstName = document.getElementById("addFirstName").value;
   let addLastName = document.getElementById("addLastName").value;
   let addEmail = document.getElementById("addEmail").value;
   let addPhone = document.getElementById("addPhone").value;
 
-  document.getElementById("contactAddResult").innerHTML = ""; 
+  document.getElementById("contactAddResult").innerHTML = "";
 
   let temp = { UserID: userId, FirstName: addFirstName, LastName: addLastName, Email: addEmail, Phone: addPhone };
   let jsonPayload = JSON.stringify(temp);
@@ -125,20 +124,16 @@ function doAddContact()
   let xhr = new XMLHttpRequest();
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-  try 
-  {
-    xhr.onreadystatechange = function () 
-    {
-      if (this.readyState == 4 && this.status == 200) 
-      {
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
         document.getElementById("contactAddResult").innerHTML =
           "Contact has been added";
       }
     };
     xhr.send(jsonPayload);
-  } 
-  catch (err) 
-  {
+  }
+  catch (err) {
     document.getElementById("contactAddResult").innerHTML = err.message;
   }
 
@@ -146,15 +141,14 @@ function doAddContact()
 }
 
 // Sara work in progress
-function doUpdateContact(id)
-{
+function doUpdateContact(id) {
   // let id = document.getElementById("contactID").value;
   let updateFirstName = document.getElementById("editFirstName").value;
   let updateLastName = document.getElementById("editLastName").value;
   let updateEmail = document.getElementById("editEmail").value;
   let updatePhone = document.getElementById("editPhone").value;
 
-  document.getElementById("contactUpdateResult").innerHTML = ""; 
+  document.getElementById("contactUpdateResult").innerHTML = "";
 
   let temp = { ID: id, userID: userId, firstName: updateFirstName, lastName: updateLastName, email: updateEmail, phone: updatePhone };
   let jsonPayload = JSON.stringify(temp);
@@ -164,25 +158,22 @@ function doUpdateContact(id)
   let xhr = new XMLHttpRequest();
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-  try 
-  {
-    xhr.onreadystatechange = function () 
-    {
-      if (this.readyState == 4 && this.status == 200) 
-      {
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
         document.getElementById("contactUpdateResult").innerHTML =
           "Contact has been updated";
       }
     };
     xhr.send(jsonPayload);
-  } 
-  catch (err) 
-  {
+  }
+  catch (err) {
     document.getElementById("contactUpdateResult").innerHTML = err.message;
   }
 
   // localStorage.removeItem('contactID');
   // localStorage.clear();
+  resetContactsTable();
   doLoadContacts();
 }
 
@@ -231,8 +222,7 @@ function doLoadContacts() {
         // resetContactsTable();
 
         // Loop thru the Array to get elements for each row
-        for (var i = 0; i < contactsArray.length; i++)
-		{
+        for (var i = 0; i < contactsArray.length; i++) {
           // Grab info
           let contactID = contactsArray[i].id;
           let contactFistName = contactsArray[i].firstName;
@@ -240,22 +230,20 @@ function doLoadContacts() {
           let contactEmail = contactsArray[i].email;
           let contactPhone = contactsArray[i].phone;
 
-		  // calling layne's function
-		  addToContactsTable(contactID, contactFistName, contactLastName, contactEmail, contactPhone);
-
+          // calling layne's function
+          addToContactsTable(contactID, contactFistName, contactLastName, contactEmail, contactPhone);
         }
       }
     };
-  } 
-  catch (err) 
-  {
+  }
+  catch (err) {
     console.log(err);
   }
 
 }
 
 function resetContactsTable() {
-  //TODO
+  document.getElementById("table").getElementsByTagName("tbody")[0].innerHTML = "";
 }
 
 // Layne Code
