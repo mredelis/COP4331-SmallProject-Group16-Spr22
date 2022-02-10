@@ -294,7 +294,7 @@ function doLoadContacts() {
 
         narrowSearch();
 
-        document.getElementById("searchBox").focus();
+        document.getElementById("searchBar").focus();
       }
     };
   }
