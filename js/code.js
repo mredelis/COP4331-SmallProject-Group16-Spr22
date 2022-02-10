@@ -233,7 +233,8 @@ function doDeleteContact(id) {
 function doLoadContacts() {
   //readCookie() is on the search.html so the userId should be available when <body> loads
 
-  let searchString = document.getElementById("searchBar").value;
+  // let searchString = document.getElementById("searchBar").value;
+  let searchString = "";
 
   console.log("UserID: ", userId);
   console.log("Search String: ", searchString);
