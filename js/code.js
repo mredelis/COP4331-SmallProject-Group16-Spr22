@@ -172,7 +172,7 @@ function doUpdateContact(id) {
     cells[1].innerHTML = updateFirstName;
     cells[2].innerHTML = updateLastName;
     cells[3].innerHTML = updateEmail;
-    cells[4].innerHTML = updatePhone;
+    cells[4].innerHTML = formatPhoneNumber(updatePhone);
   }
   catch (err) {
     document.getElementById("contactUpdateResult").innerHTML = err.message;
