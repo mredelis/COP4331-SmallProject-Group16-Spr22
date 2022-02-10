@@ -169,10 +169,10 @@ function doUpdateContact(id) {
     xhr.send(jsonPayload);
     let cells = document.getElementById(id).getElementsByTagName("td");
 
-    cells[1] = updateFirstName;
-    cells[2] = updateLastName;
-    cells[3] = updateEmail;
-    cells[4] = updatePhone;
+    cells[1].innerHTML = updateFirstName;
+    cells[2].innerHTML = updateLastName;
+    cells[3].innerHTML = updateEmail;
+    cells[4].innerHTML = updatePhone;
   }
   catch (err) {
     document.getElementById("contactUpdateResult").innerHTML = err.message;
