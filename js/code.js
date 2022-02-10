@@ -147,8 +147,8 @@ function doAddContact() {
     document.getElementById("contactAddResult").innerHTML = err.message;
   }
 
-  resetContactsTable();
-  doLoadContacts();
+  // resetContactsTable();
+  // doLoadContacts();
 }
 
 // Sara work in progress
