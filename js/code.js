@@ -135,6 +135,7 @@ function doAddContact() {
         let curSearch = document.getElementById("searchBar").value.toLowerCase();
         let row = addToContactsTable(id, addFirstName, addLastName, addEmail, formatPhoneNumber(addPhone));
 
+        // Set visibility of new row depending on current search term
         if (addFirstName.toLowerCase().includes(curSearch) || addLastName.toLowerCase().includes(curSearch)) {
           row.style.display = "";
         } else {
@@ -292,6 +293,8 @@ function doLoadContacts() {
         }
 
         narrowSearch();
+
+        document.getElementById("searchBox").focus();
       }
     };
   }
