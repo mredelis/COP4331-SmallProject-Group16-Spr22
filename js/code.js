@@ -127,6 +127,11 @@ function doAddContact() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
+        let jsonObject = JSON.parse(xhr.responseText);
+        let id = jsonObject.id;
+
+        addToContactsTable(id, addFirstName, addLastName, addEmail, formatPhoneNumber(addPhone));
+
         document.getElementById("contactAddResult").innerHTML =
           "Contact has been added";
       }
@@ -137,7 +142,7 @@ function doAddContact() {
     document.getElementById("contactAddResult").innerHTML = err.message;
   }
 
-  doLoadContacts();
+  // doLoadContacts();
 }
 
 // Sara work in progress
