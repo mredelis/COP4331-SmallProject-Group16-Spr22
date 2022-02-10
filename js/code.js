@@ -297,7 +297,7 @@ function doLoadContacts() {
 function narrowSearch() {
   let srch = document.getElementById("searchBar").value.toLowerCase();
   let table = document.getElementById("table");
-  let trs = table.getElementsByTagName("tr");
+  let trs = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 
   for (let i = 0; i < trs.length; i++) {
     let cells = trs[i].getElementsByTagName("td");
