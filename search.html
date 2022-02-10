@@ -434,6 +434,11 @@
         $("#deleteUserModal").modal("hide");
         return false;
       });
+
+      // Search
+      $("#searchBar").on("input", function () {
+        doLoadContacts();
+      });
     });
   </script>
 </head>
