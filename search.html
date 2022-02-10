@@ -354,7 +354,7 @@
 
         if (phoneF) {
           doAddContact();
-          $(this).find("form").trigger("reset");
+          $(this).trigger("reset");
           $("input:visible:enabled:first", this).focus();
         } else {
           // Custom validation message
