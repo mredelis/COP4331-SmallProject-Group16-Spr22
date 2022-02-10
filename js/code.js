@@ -113,10 +113,11 @@ function doAddContact() {
   let addLastName = document.getElementById("addLastName").value;
   let addEmail = document.getElementById("addEmail").value;
   let addPhone = document.getElementById("addPhone").value;
+  let addPhoneF = formatPhoneNumber(addPhone);
 
   document.getElementById("contactAddResult").innerHTML = "";
 
-  let temp = { UserID: userId, FirstName: addFirstName, LastName: addLastName, Email: addEmail, Phone: addPhone };
+  let temp = { UserID: userId, FirstName: addFirstName, LastName: addLastName, Email: addEmail, Phone: addPhoneF };
   let jsonPayload = JSON.stringify(temp);
 
   let url = urlBase + "/AddContact." + extension;
@@ -152,10 +153,11 @@ function doUpdateContact(id) {
   let updateLastName = document.getElementById("editLastName").value;
   let updateEmail = document.getElementById("editEmail").value;
   let updatePhone = document.getElementById("editPhone").value;
+  let updatePhoneF = formatPhoneNumber(updatePhone);
 
   document.getElementById("contactUpdateResult").innerHTML = "";
 
-  let temp = { ID: id, userID: userId, firstName: updateFirstName, lastName: updateLastName, email: updateEmail, phone: updatePhone };
+  let temp = { ID: id, userID: userId, firstName: updateFirstName, lastName: updateLastName, email: updateEmail, phone: updatePhoneF };
   let jsonPayload = JSON.stringify(temp);
 
   let url = urlBase + "/UpdateContact." + extension;
