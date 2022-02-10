@@ -295,7 +295,7 @@ function doLoadContacts() {
         narrowSearch();
 
         let searchBar = document.getElementById("searchBar");
-        let len = searchBar.val().length * 2;
+        let len = searchBar.value.length * 2;
         searchBar.focus();
         searchBar[0].setSelectionRange(len, len);
       }
