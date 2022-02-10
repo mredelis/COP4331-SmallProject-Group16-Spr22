@@ -22,10 +22,12 @@
 		$stmt->bind_param("issss", $userID, $FirstName, $LastName, $Email, $Phone);
 		$stmt->execute();
 		$stmt->close();
+
+		$id = $conn->insert_id;
 		
 		$conn->close();
 
-		returnWithError("");
+		returnWithInfo($id);
 	}
 	
 
@@ -46,9 +48,15 @@
 		echo $obj;
 	}
 	
+	function returnWithInfo( $id )
+	{
+		$retValue = '{"id":' . $id . ',"err":""';
+		sendResultInfoAsJson( $retValue );
+	}
+	
 	function returnWithError( $err )
 	{
-		$retValue = '{"error":"' . $err . '"}';
+		$retValue = '{"id":0,"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
