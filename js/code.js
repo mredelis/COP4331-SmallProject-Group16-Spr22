@@ -130,11 +130,15 @@ function doAddContact() {
       if (this.readyState == 4 && this.status == 200) {
         // Get ID of row added to database
         // Only append new row if added contact matches search term(s)
+        let jsonObject = JSON.parse(xhr.responseText);
+        let id = jsonObject.id;
         let curSearch = document.getElementById("searchBar").value.toLowerCase();
+        let row = addToContactsTable(id, addFirstName, addLastName, addEmail, formatPhoneNumber(addPhone));
+
         if (addFirstName.toLowerCase().includes(curSearch) || addLastName.toLowerCase().includes(curSearch)) {
-          let jsonObject = JSON.parse(xhr.responseText);
-          let id = jsonObject.id;
-          addToContactsTable(id, addFirstName, addLastName, addEmail, formatPhoneNumber(addPhone));
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
         }
 
         document.getElementById("contactAddResult").innerHTML =
@@ -286,6 +290,8 @@ function doLoadContacts() {
           // calling layne's function
           addToContactsTable(contactID, contactFistName, contactLastName, contactEmail, contactPhone);
         }
+
+        narrowSearch();
       }
     };
   }
