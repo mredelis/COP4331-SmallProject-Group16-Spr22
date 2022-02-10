@@ -321,6 +321,7 @@
       $("#selectAll").click(function () {
         if (this.checked) {
           checkbox.each(function () {
+            console.log(checkbox.attr["id"]);
             this.checked = true;
           });
         } else {
@@ -353,6 +354,8 @@
 
         if (phoneF) {
           doAddContact();
+          $(this).find("form").trigger("reset");
+          $("input:visible:enabled:first", this).focus();
         } else {
           // Custom validation message
           el.setCustomValidity("Please enter a valid 10-digit phone number.");
