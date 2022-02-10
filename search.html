@@ -383,6 +383,12 @@
         return false;
       });
 
+      $("#deleteUserModal").on('show.bs.modal', function (e) {
+        let srcEl = e.relatedTarget;
+        let row = $(srcEl).closest("tr");
+        let id = row.attr("id");
+        rowId = id;
+      });
       $("#deleteUserModal form").submit(function () {
         doDeleteContact(rowId);
         $("#deleteUserModal").modal("hide");
