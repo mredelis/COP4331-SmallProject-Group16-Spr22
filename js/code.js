@@ -148,7 +148,8 @@ function doAddContact()
 // Sara work in progress
 function doUpdateContact()
 {
-  let id = document.getElementById("contactID").value;
+  // let id = document.getElementById("contactID").value;
+  // let id = localStorage.getItem('contactID');
   let updateFirstName = document.getElementById("editFirstName").value;
   let updateLastName = document.getElementById("editLastName").value;
   let updateEmail = document.getElementById("editEmail").value;
@@ -181,6 +182,8 @@ function doUpdateContact()
     document.getElementById("contactUpdateResult").innerHTML = err.message;
   }
 
+  // localStorage.removeItem('contactID');
+  // localStorage.clear();
   doLoadContacts();
 }
 
@@ -310,9 +313,9 @@ function addToContactsTable(rowID, firstName, lastName, email, phone) {
   // Options (edit, delete buttons) cell
   let optionsCell = newTr.insertCell();
   optionsCell.innerHTML =
-    '<a href="#editEmployeeModal" class="edit" data-toggle="modal">\
+    '<a href="#editUserModal" class="edit" data-toggle="modal">\
 		<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>\
-		<a href="#deleteEmployeeModal" class="delete" data-toggle="modal">\
+		<a href="#deleteUserModal" class="delete" data-toggle="modal">\
 		<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>';
 
   return newTr;
