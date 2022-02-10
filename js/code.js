@@ -148,8 +148,7 @@ function doAddContact()
 // Sara work in progress
 function doUpdateContact()
 {
-  // let id = document.getElementById("contactID").value;
-  // let id = localStorage.getItem('contactID');
+  let id = document.getElementById("contactID").value;
   let updateFirstName = document.getElementById("editFirstName").value;
   let updateLastName = document.getElementById("editLastName").value;
   let updateEmail = document.getElementById("editEmail").value;

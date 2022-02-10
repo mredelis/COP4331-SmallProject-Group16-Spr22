@@ -317,7 +317,7 @@
           let email = cells.eq(3).text();
           let phone = cells.eq(4).text();
 	
-	        // $("#contactID", this).val(id);
+	        $("#contactID", this).val(id);
           $("#editFirstName", this).val(firstName);
           $("#editLastName", this).val(lastName);
           $("#editEmail", this).val(email);
@@ -593,10 +593,9 @@
               <span id="contactUpdateResult" style="color: #ff0f0f"></span>
             </div>
             <div class="modal-body">
-              <!-- <div class="form-group">
-                <label>Id</label>
-                <input id="contactID" type="text" class="form-control" required />
-              </div> -->
+              <div class="form-group">
+                <input id="contactID" type="hidden" class="form-control" required />
+              </div>
               <div class="form-group">
                 <label>First Name</label>
                 <input id="editFirstName" type="text" class="form-control" required />
