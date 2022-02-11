@@ -331,7 +331,7 @@
         }
       });
       // Deselect check-all if any checkbox is unchecked
-      $("table tbody input[type='checkbox']").change(function () {
+      $("table tbody #checkbox").click(function () {
         console.log("boop!");
         if (!this.checked) {
           $("#selectAll").prop("checked", false);
@@ -439,31 +439,15 @@
       });
       // Actual delete action
       $("#deleteUserModal form").submit(function () {
-        // If batch delete button was pressed
-        // if (!rowId) {
-        //   console.log("batch delete")
-        //   let trs = $("table tbody tr");
-        //   trs.each(function () {
-        //     let cbox = $("#checkbox", this);
-        //     // Delete all row IDs that are checked
-        //     if (cbox.prop("checked")) {
-        //       let id = $(this).attr("id");
-        //       doDeleteContact(id);
-        //     }
-        //   });
-        // } else {
-        //   doDeleteContact(rowId);
-        // }
-
         doDeleteContact(rowId);
         $("#deleteUserModal").modal("hide");
         return false;
       });
       $("#deleteMultiUserModal form").submit(function () {
         let trs = $("table tbody tr");
+        // Delete all rows with checked boxes
         trs.each(function () {
           let cbox = $("#checkbox", this);
-          // Delete all row IDs that are checked
           if (cbox.prop("checked")) {
             let id = $(this).attr("id");
             doDeleteContact(id);
