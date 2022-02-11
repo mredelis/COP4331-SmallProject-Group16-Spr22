@@ -403,11 +403,7 @@
       // Allows immediately pressing escape to exit
       $("#editUserModal").on("shown.bs.modal", function () {
         let field = $("#editFirstName");
-        let len = field.val().length * 2;
-        // field.focus();
-        field.selectionStart = 0;
-        field.selectionEnd = len;
-        // field.setSelectionRange(0, len);
+        field.select();
       });
       // Reset form on modal close
       $("#editUserModal").on("hidden.bs.modal", function () {
