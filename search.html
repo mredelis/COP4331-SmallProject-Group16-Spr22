@@ -442,7 +442,7 @@
           // Delete rows with checked box
           let trs = $("table tbody tr");
           trs.each(function () {
-            console.log($(this).attr("id"));
+            // console.log($(this).attr("id"));
             let cells = $("td", this);
             let cbox = cells[0];
             if (cbox.checked) {
