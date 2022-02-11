@@ -449,7 +449,7 @@
         // Delete all rows with checked boxes
         trs.each(function () {
           let cbox = $("input[type='checkbox']", this);
-          if (this.css("display") === "" && cbox.prop("checked")) {
+          if ($(this).css("display") === "" && cbox.prop("checked")) {
             let id = $(this).attr("id");
             doDeleteContact(id);
           }
