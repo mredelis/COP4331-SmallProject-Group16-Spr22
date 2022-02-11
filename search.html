@@ -333,7 +333,8 @@
       // Deselect check-all if any checkbox is unchecked
       $("table tbody input[type='checkbox']").click(function () {
         console.log("boop!");
-        if (!this.checked) {
+        let checked = $(this).prop("checked");
+        if (!checked) {
           $("#selectAll").prop("checked", false);
         }
       });
@@ -448,12 +449,14 @@
         // Delete all rows with checked boxes
         trs.each(function () {
           let cbox = $("input[type='checkbox']", this);
-          if (cbox.prop("checked")) {
+          if (this.css("display") === "" && cbox.prop("checked")) {
             let id = $(this).attr("id");
             doDeleteContact(id);
           }
         });
         $("#deleteMultiUserModal").modal("hide");
+        // Reset check-all box
+        $("#selectAll").prop("checked", false);
         return false;
       });
     });
