@@ -393,13 +393,13 @@
         let email = cells.eq(3).text();
         let phone = cells.eq(4).text();
 
-        $("#contactID", this).val(id);
-        $("#editFirstName", this).val(firstName);
-        $("#editLastName", this).val(lastName);
-        $("#editEmail", this).val(email);
-        $("#editPhone", this).val(phone);
+        $("#contactID").val(id);
+        $("#editFirstName").val(firstName);
+        $("#editLastName").val(lastName);
+        $("#editEmail").val(email);
+        $("#editPhone").val(phone);
 
-        $("#editFirstName", this).select();
+        $("#editFirstName").select();
       });
       // Focus first name text box once modal appears
       // Allows immediately pressing escape to exit
