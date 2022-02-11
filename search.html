@@ -341,7 +341,8 @@
 
       // Place cursor in first text box on popup
       $("#addUserModal").on("shown.bs.modal", function () {
-        $("input:visible:enabled:first", this).focus();
+        let field = $("input:visible:enabled:first", this);
+        field.focus();
       });
       // Reset form on close
       $("#addUserModal").on("hidden.bs.modal", function () {
@@ -401,7 +402,10 @@
       // Focus first name text box once modal appears
       // Allows immediately pressing escape to exit
       $("#editUserModal").on("shown.bs.modal", function () {
-        $("input:visible:enabled:first", this).focus();
+        let field = $("input:visible:enabled:first", this);
+        let len = field.val().length * 2;
+        field.focus();
+        field.setSelectionRange(0, len);
       });
       // Reset form on modal close
       $("#editUserModal").on("hidden.bs.modal", function () {

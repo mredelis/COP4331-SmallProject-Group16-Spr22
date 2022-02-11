@@ -292,8 +292,10 @@ function doLoadContacts() {
           addToContactsTable(contactID, contactFistName, contactLastName, contactEmail, contactPhone);
         }
 
+        // Narrow table right away (there might be a search term already in the bar)
         narrowSearch();
 
+        // Focus search bar
         let searchBar = document.getElementById("searchBar");
         let len = searchBar.value.length * 2;
         searchBar.focus();
