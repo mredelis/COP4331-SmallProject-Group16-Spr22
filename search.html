@@ -319,6 +319,7 @@
       // Select/Deselect checkboxes
       var checkbox = $('table tbody input[type="checkbox"]');
       $("#selectAll").click(function () {
+        console.log("hi");
         if (this.checked) {
           checkbox.each(function () {
             console.log(checkbox.attr["id"]);
