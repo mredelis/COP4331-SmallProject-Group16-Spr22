@@ -310,12 +310,16 @@ function doLoadContacts() {
 // "Refreshes" contacts table based on current search term
 function narrowSearch() {
   let srch = document.getElementById("searchBar").value.toLowerCase();
-  if (srch === "") {
-    return;
-  }
-
   let table = document.getElementById("table");
   let trs = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+
+  // Check for blank search string
+  if (srch === "") {
+    for (let i = 0; i < trs.length; i++) {
+      trs[i].style.display = "";
+    }
+    return;
+  }
 
   // Split on whitespace or comma
   let srchSplit = srch.split(/[ ,]+/);
@@ -332,7 +336,7 @@ function narrowSearch() {
 
     // Check against all search terms
     for (let term of srchSplit) {
-      if (term != "" && (curFirst.includes(term) || curLast.includes(term))) {
+      if (term != "" && (curFirst.includes(term) || curLast.includes(term) || curEmail.includes(term) || curPhone.includes(term))) {
         showRow = true;
         break;
       }
