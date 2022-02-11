@@ -436,24 +436,26 @@
         let row = $(srcEl).closest("tr");
         let id = row.attr("id");
         rowId = id;
-
-        if (!rowId) {
-          console.log("batch delete")
-          // Delete rows with checked box
-          let trs = $("table tbody tr");
-          trs.each(function () {
-            // console.log($(this).attr("id"));
-            let cells = $("td", this);
-            let cbox = $("#checkbox", this);
-            if (cbox.prop("checked")) {
-              console.log("would delete " + cells.eq(1).text());
-            }
-          });
-        }
       });
       // Actual delete action
       $("#deleteUserModal form").submit(function () {
-        doDeleteContact(rowId);
+        // If batch delete button was pressed
+        if (!rowId) {
+          console.log("batch delete")
+          let trs = $("table tbody tr");
+          trs.each(function () {
+            let cbox = $("#checkbox", this);
+            // Delete all row IDs that are checked
+            if (cbox.prop("checked")) {
+              let id = $(this).attr("id");
+              doDeleteContact(id);
+              // console.log("would delete " + cells.eq(1).text());
+            }
+          });
+        } else {
+          doDeleteContact(rowId);
+        }
+
         $("#deleteUserModal").modal("hide");
         return false;
       });
