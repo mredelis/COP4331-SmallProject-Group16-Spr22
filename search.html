@@ -322,7 +322,7 @@
         console.log("hi");
         if (this.checked) {
           checkbox.each(function () {
-            console.log(checkbox.attr["id"]);
+            console.log(this.attr["id"]);
             this.checked = true;
           });
         } else {
