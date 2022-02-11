@@ -404,7 +404,7 @@
       $("#editUserModal").on("shown.bs.modal", function () {
         let field = $("#editFirstName");
         let len = field.val().length * 2;
-        field.focus();
+        // field.focus();
         field.selectionStart = 0;
         field.selectionEnd = len;
         // field.setSelectionRange(0, len);
