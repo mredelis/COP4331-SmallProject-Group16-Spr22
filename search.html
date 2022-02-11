@@ -443,7 +443,7 @@
           let trs = $("table tbody tr");
           trs.each(function () {
             // console.log($(this).attr("id"));
-            let cells = $("td", this);
+            let cells = $(this).find("td");
             let cbox = cells.eq(0);
             console.log(cbox.prop("checked"));
             if (cbox.prop("checked")) {
