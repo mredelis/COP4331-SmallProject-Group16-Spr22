@@ -447,7 +447,7 @@
         let trs = $("table tbody tr");
         // Delete all rows with checked boxes
         trs.each(function () {
-          let cbox = $("#checkbox", this);
+          let cbox = $("input[type='checkbox']", this);
           if (cbox.prop("checked")) {
             let id = $(this).attr("id");
             doDeleteContact(id);
