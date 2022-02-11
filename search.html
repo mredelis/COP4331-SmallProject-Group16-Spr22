@@ -445,8 +445,8 @@
             // console.log($(this).attr("id"));
             let cells = $("td", this);
             let cbox = cells.eq(0);
-            console.log(cbox.is(":checked"));
-            if (cbox.checked) {
+            console.log(cbox.prop("checked"));
+            if (cbox.prop("checked")) {
               console.log("would delete " + cells[1].val());
             }
           });
