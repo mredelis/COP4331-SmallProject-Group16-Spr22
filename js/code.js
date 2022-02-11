@@ -328,7 +328,7 @@ function narrowSearch() {
 
     // Check against all search terms
     for (let term of srchSplit) {
-      if (curFirst.includes(term) || curLast.includes(term)) {
+      if (term != "" && (curFirst.includes(term) || curLast.includes(term))) {
         showRow = true;
         break;
       }
