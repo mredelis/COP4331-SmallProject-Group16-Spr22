@@ -331,7 +331,7 @@
         }
       });
       // Deselect check-all if any checkbox is unchecked
-      $("table tbody #checkbox").click(function () {
+      $("table tbody input[type='checkbox']").click(function () {
         console.log("boop!");
         if (!this.checked) {
           $("#selectAll").prop("checked", false);
