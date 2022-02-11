@@ -338,10 +338,15 @@
 
       let rowId = 0;
 
+      // Place cursor in first text box on popup
+      $("#addUserModal").on('shown.bs.modal', function () {
+        $("input:visible:enabled:first", this).focus();
+      });
+      // Reset form on close
       $("#addUserModal").on("hidden.bs.modal", function () {
         $(this).find("form").trigger("reset");
         document.getElementById("contactAddResult").innerHTML = "";
-      })
+      });
       // Add contact button
       $("#addUserModal form").submit(function () {
         let phone = $("#addPhone").val();
