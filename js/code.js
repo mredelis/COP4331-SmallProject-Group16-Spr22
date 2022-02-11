@@ -385,7 +385,7 @@ function addToContactsTable(rowID, firstName, lastName, email, phone) {
   let checkCell = newTr.insertCell();
   checkCell.innerHTML =
     '<span class = "custom-checkbox">\
-		<input type="checkbox" id="checkbox' + rowID + '" name="options[]" value="1">\
+		<input type="checkbox" id="checkbox" name="options[]" value="1">\
 		<label for="checkbox"></label>\
 		</span>';
 
