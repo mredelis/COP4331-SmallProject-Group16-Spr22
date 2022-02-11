@@ -317,8 +317,8 @@
       $('[data-toggle="tooltip"]').tooltip();
 
       // Select/Deselect checkboxes
-      let checkbox = $("table tbody input[type='checkbox']");
       $("#selectAll").click(function () {
+        let checkbox = $("table tbody input[type='checkbox']");
         console.log("hi");
         if (this.checked) {
           checkbox.each(function () {
@@ -331,7 +331,7 @@
           });
         }
       });
-      checkbox.click(function () {
+      $("table tbody input[type='checkbox']").click(function () {
         if (!this.checked) {
           $("#selectAll").prop("checked", false);
         }
@@ -340,7 +340,7 @@
       let rowId = 0;
 
       // Place cursor in first text box on popup
-      $("#addUserModal").on('shown.bs.modal', function () {
+      $("#addUserModal").on("shown.bs.modal", function () {
         $("input:visible:enabled:first", this).focus();
       });
       // Reset form on close
@@ -373,7 +373,7 @@
       });
 
       // Fill edit popup with info that was already there
-      $("#editUserModal").on('show.bs.modal', function (e) {
+      $("#editUserModal").on("show.bs.modal", function (e) {
         // Get ID of current row
         let srcEl = e.relatedTarget;
         let row = $(srcEl).closest("tr");
@@ -400,11 +400,11 @@
       });
       // Focus first name text box once modal appears
       // Allows immediately pressing escape to exit
-      $("#editUserModal").on('shown.bs.modal', function () {
+      $("#editUserModal").on("shown.bs.modal", function () {
         $("input:visible:enabled:first", this).focus();
       });
       // Reset form on modal close
-      $("#editUserModal").on('hidden.bs.modal', function () {
+      $("#editUserModal").on("hidden.bs.modal", function () {
         $(this).find("form").trigger("reset");
         document.getElementById("contactUpdateResult").innerHTML = "";
       });
@@ -431,7 +431,7 @@
       });
 
       // Update rowId when open delete dialog
-      $("#deleteUserModal").on('show.bs.modal', function (e) {
+      $("#deleteUserModal").on("show.bs.modal", function (e) {
         let srcEl = e.relatedTarget;
         let row = $(srcEl).closest("tr");
         let id = row.attr("id");
