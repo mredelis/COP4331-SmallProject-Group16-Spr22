@@ -307,21 +307,34 @@ function doLoadContacts() {
 
 }
 
+// "Refreshes" contacts table based on current search term
 function narrowSearch() {
   let srch = document.getElementById("searchBar").value.toLowerCase();
   let table = document.getElementById("table");
   let trs = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 
+  // Split on whitespace or comma
+  let srchSplit = srch.split(/[ ,]+/);
+
   for (let i = 0; i < trs.length; i++) {
     let cells = trs[i].getElementsByTagName("td");
     let curFirst = cells[1].innerHTML.toLowerCase();
     let curLast = cells[2].innerHTML.toLowerCase();
+    let curEmail = cells[3].innerHTML.toLowerCase();
+    // Get only digits from phone #
+    let curPhone = cells[4].innerHTML.replace(/\D/g, "");
 
-    if (curFirst.includes(srch) || curLast.includes(srch)) {
-      trs[i].style.display = "";
-    } else {
-      trs[i].style.display = "none";
+    let showRow = false;
+
+    // Check against all search terms
+    for (let term of srchSplit) {
+      if (curFirst.includes(srch) || curLast.includes(srch)) {
+        showRow = true;
+        break;
+      }
     }
+
+    trs[i].style.display = showRow ? "" : "none";
   }
 }
 
