@@ -453,6 +453,7 @@
             let id = $(this).attr("id");
             doDeleteContact(id);
           }
+          cbox.prop("checked", false);
         });
         $("#deleteMultiUserModal").modal("hide");
         // Reset check-all box
