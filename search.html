@@ -437,7 +437,11 @@
         let id = row.attr("id");
         rowId = id;
 
-        console.log(rowId);
+        if (!rowId) {
+          console.log("batch delete")
+        } else {
+          console.log("delete contact with id " + rowId);
+        }
       });
       // Actual delete action
       $("#deleteUserModal form").submit(function () {
@@ -460,7 +464,7 @@
         <i class="fas fa-sign-out-alt"></i></button>
     </form>
   </nav>
-  
+
   <div class="text-center my-5">
     <h2 class="heading-section" style="color: #fff">Your Contacts Simplified</h2>
   </div>
