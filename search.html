@@ -330,7 +330,7 @@
           });
         }
       });
-      $("table tbody input[type='checkbox']").click(function () {
+      $("table tbody input[type='checkbox']").change(function () {
         console.log("boop!");
         if (!this.checked) {
           $("#selectAll").prop("checked", false);
