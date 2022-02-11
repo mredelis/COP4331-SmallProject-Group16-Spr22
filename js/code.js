@@ -293,8 +293,9 @@ function doLoadContacts() {
         }
 
         // Rogue jQuery...
+        // Add event listeners to the checkboxes that will uncheck
+        // the selectAll checkbox if any are unchecked
         $("table tbody input[type='checkbox']").click(function () {
-          console.log("boop!");
           let checked = $(this).prop("checked");
           if (!checked) {
             $("#selectAll").prop("checked", false);
