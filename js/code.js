@@ -330,8 +330,6 @@ function narrowSearch() {
 
     let showRow = false;
 
-    console.log(srchSplit);
-
     // Check against all search terms
     for (let term of srchSplit) {
       if (term != "" && (curFirst.includes(term) || curLast.includes(term))) {
