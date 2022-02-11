@@ -292,6 +292,15 @@ function doLoadContacts() {
           addToContactsTable(contactID, contactFistName, contactLastName, contactEmail, contactPhone);
         }
 
+        // Rogue jQuery...
+        $("table tbody input[type='checkbox']").click(function () {
+          console.log("boop!");
+          let checked = $(this).prop("checked");
+          if (!checked) {
+            $("#selectAll").prop("checked", false);
+          }
+        });
+
         // Narrow table right away (there might be a search term already in the bar)
         narrowSearch();
 
