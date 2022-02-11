@@ -398,13 +398,15 @@
         $("#editLastName", this).val(lastName);
         $("#editEmail", this).val(email);
         $("#editPhone", this).val(phone);
+
+        $("#editFirstName", this).select();
       });
       // Focus first name text box once modal appears
       // Allows immediately pressing escape to exit
-      $("#editUserModal").on("shown.bs.modal", function () {
-        let field = $("#editFirstName");
-        field.select();
-      });
+      // $("#editUserModal").on("shown.bs.modal", function () {
+      //   let field = $("#editFirstName");
+      //   field.select();
+      // });
       // Reset form on modal close
       $("#editUserModal").on("hidden.bs.modal", function () {
         $(this).find("form").trigger("reset");
