@@ -330,6 +330,7 @@
           });
         }
       });
+      // Deselect check-all if any checkbox is unchecked
       $("table tbody input[type='checkbox']").change(function () {
         console.log("boop!");
         if (!this.checked) {
@@ -339,10 +340,9 @@
 
       let rowId = 0;
 
-      // Place cursor in first text box on popup
+      // Place cursor in first input on popup
       $("#addUserModal").on("shown.bs.modal", function () {
-        let field = $("input:visible:enabled:first", this);
-        field.focus();
+        $("#addFirstName").focus();
       });
       // Reset form on close
       $("#addUserModal").on("hidden.bs.modal", function () {
@@ -362,7 +362,7 @@
         if (phoneF) {
           doAddContact();
           $(this).trigger("reset");
-          $("input:visible:enabled:first", this).focus();
+          $("#addFirstName").focus();
         } else {
           // Custom validation message
           el.setCustomValidity("Please enter a valid 10-digit phone number.");
@@ -399,10 +399,9 @@
         $("#editEmail").val(email);
         $("#editPhone").val(phone);
       });
-      // Select first name text box once modal appears
+      // Select first name input on popup
       $("#editUserModal").on("shown.bs.modal", function () {
-        let field = $("#editFirstName");
-        field.select();
+        $("#editFirstName").select();
       });
       // Reset form on modal close
       $("#editUserModal").on("hidden.bs.modal", function () {
@@ -437,6 +436,8 @@
         let row = $(srcEl).closest("tr");
         let id = row.attr("id");
         rowId = id;
+
+        console.log(rowId);
       });
       // Actual delete action
       $("#deleteUserModal form").submit(function () {
