@@ -310,6 +310,10 @@ function doLoadContacts() {
 // "Refreshes" contacts table based on current search term
 function narrowSearch() {
   let srch = document.getElementById("searchBar").value.toLowerCase();
+  if (srch === "") {
+    return;
+  }
+
   let table = document.getElementById("table");
   let trs = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 
@@ -325,6 +329,8 @@ function narrowSearch() {
     let curPhone = cells[4].innerHTML.replace(/\D/g, "");
 
     let showRow = false;
+
+    console.log(srchSplit);
 
     // Check against all search terms
     for (let term of srchSplit) {
