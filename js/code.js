@@ -295,12 +295,12 @@ function doLoadContacts() {
         // Rogue jQuery...
         // Add event listeners to the checkboxes that will uncheck
         // the selectAll checkbox if any are unchecked
-        $("table tbody input[type='checkbox']").click(function () {
-          let checked = $(this).prop("checked");
-          if (!checked) {
-            $("#selectAll").prop("checked", false);
-          }
-        });
+        // $("table tbody input[type='checkbox']").click(function () {
+        //   let checked = $(this).prop("checked");
+        //   if (!checked) {
+        //     $("#selectAll").prop("checked", false);
+        //   }
+        // });
 
         // Narrow table right away (there might be a search term already in the bar)
         narrowSearch();
@@ -318,6 +318,8 @@ function doLoadContacts() {
   }
 
 }
+
+
 
 // "Refreshes" contacts table based on current search term
 function narrowSearch() {
@@ -420,6 +422,15 @@ function addToContactsTable(rowID, firstName, lastName, email, phone) {
 		<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>\
 		<a href="#deleteUserModal" class="delete" data-toggle="modal">\
 		<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>';
+  
+  // Add event listener to the checkbox that will uncheck
+  // the selectAll checkbox if this one is unchecked
+  $("#checkbox" + rowID).click(function () {
+    let checked = $(this).prop("checked");
+    if (!checked) {
+      $("#selectAll").prop("checked", false);
+    }
+  });
 
   return newTr;
 }
