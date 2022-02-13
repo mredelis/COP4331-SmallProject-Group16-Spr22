@@ -4,6 +4,7 @@
 <head>
 	<title>Contact Manager</title>
 	<meta charset="utf-8">
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -12,11 +13,50 @@
 
 	<link rel="stylesheet" href="css/style.css">
 
+	<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 </head>
 
-<body class="img js-fullheight" style="background-image: url(images/background.png);">
+<style>
+	body {
+      background: url(images/background.png) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      /* color: #566787;
+	  background: #f5f5f5; */
+    }
+</style>
+<script>
+	$(function() {
+
+		if (localStorage.chkbx && localStorage.chkbx != '') {
+			$('#rememberMe').attr('checked', 'checked');
+			$('#login').val(localStorage.usrname);
+		} else {
+			$('#rememberMe').removeAttr('checked');
+			$('#login').val('');
+		}
+
+		$('#rememberMe').click(function() {
+
+			if ($('#rememberMe').is(':checked')) {
+				// save username and password
+				localStorage.usrname = $('#login').val();
+				localStorage.chkbx = $('#rememberMe').val();
+			} else {
+				localStorage.usrname = '';
+				localStorage.chkbx = '';
+			}
+		});
+	});
+
+</script>
+
+<body class="img js-fullheight">
 	<section class="ftco-section">
 		<div class="container">
+			<br></br>
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
 					<h2 class="heading-section">Contact Manager</h2>
@@ -44,7 +84,7 @@
 								<div class="w-50">
 									<label class="checkbox-wrap checkbox-primary">
 										Remember Me
-										<input type="checkbox" checked>
+										<input type="checkbox" value="remember-me"id="rememberMe" >
 										<span class="checkmark"></span>
 									</label>
 								</div>
@@ -72,7 +112,7 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<!-- <script src="js/main.js"></script> -->
+	<script src="js/main.js"></script>
 	<script type="text/javascript" src="js/md5.js"></script>
 	<script type="text/javascript" src="js/code.js"></script>
 
