@@ -344,11 +344,15 @@
         if (this.checked) {
           checkbox.each(function () {
             // console.log(checkbox.attr["id"]);
-            this.checked = true;
+            if (this.style.display != "none") {
+              this.checked = true;
+            }
           });
         } else {
           checkbox.each(function () {
-            this.checked = false;
+            if (this.style.display != "none") {
+              this.checked = false;
+            }
           });
         }
       });
