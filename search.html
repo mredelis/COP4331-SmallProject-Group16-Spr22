@@ -311,7 +311,18 @@
       margin-bottom: 10px;
     }
 
-    thead, tbody { 
+    th {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    thead {
+      z-index: 999;
+    }
+
+    thead, tbody {
       display: fixed;
     }
 
