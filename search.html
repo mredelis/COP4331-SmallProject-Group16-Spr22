@@ -344,14 +344,16 @@
         if (this.checked) {
           checkbox.each(function () {
             // console.log(checkbox.attr["id"]);
-            if (this.style.display != "none") {
+            let nearestRow = $(this).closest("tr");
+            if (nearestRow.css("display") != "none") {
               console.log(this.style.display);
               this.checked = true;
             }
           });
         } else {
           checkbox.each(function () {
-            if (this.style.display != "none") {
+            let nearestRow = $(this).closest("tr");
+            if (nearestRow.css("display") != "none") {
               this.checked = false;
             }
           });
